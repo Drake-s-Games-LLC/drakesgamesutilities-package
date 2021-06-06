@@ -1,0 +1,17 @@
+{
+    "name": "com.drakesgames.drakesgamesutilities",
+    "version": "1.0.0",
+    "displayName": "Drakes Games Utilities",
+    "description": "This package contains useful scripts for various purposes",
+    "unity": "2019.1",
+    "keywords": [
+        "Events",
+        "Utility",
+        "DrakesGames"
+    ],
+    "author": {
+        "name": "Drake's Games LLC",
+        "email": "drakesgamesllc@gmail.com",
+        "url": "https://drakesgames.com/"
+    }
+}

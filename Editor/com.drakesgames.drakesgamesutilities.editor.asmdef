@@ -1,0 +1,17 @@
+{
+    "name": "com.drakesgames.drakesgamesutilities.editor",
+    "references": [
+        "GUID:b78fda0523a6ad64ea9baccb906ae47f"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
