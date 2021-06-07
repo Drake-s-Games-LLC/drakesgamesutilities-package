@@ -7,9 +7,9 @@ using UnityEngine;
 namespace Events
 {
     /// <summary>
-    ///     Local event manager / messaging system.  Functions very similarly to the "EventManager" singleton class,
+    /// Local event manager / messaging system.  Functions very similarly to the "EventManager" singleton class,
     /// but can be instanced / referenced locally instead of globally via a singleton.  Common use case is to use this to
-    /// message across multiple components within one game "entity" like a character.  
+    /// message across multiple components within one game "entity" like a player.  
     /// </summary>
     public class LocalEventManager : MonoBehaviour
     {
@@ -17,13 +17,17 @@ namespace Events
         private Dictionary<object, Dictionary<Type, List<LocalEventListener>>> instanceEventListeners;
 
         private Dictionary<object, Dictionary<Type, List<UnityEventEventInfo>>> unityEventListeners;
-
+        
+        private delegate void LocalEventListener(EventInfoBase eventInfo);
+        
         private void Awake()
         {
             if (instanceEventListeners == null)
                 instanceEventListeners = new Dictionary<object, Dictionary<Type, List<LocalEventListener>>>();
         }
 
+        #region Listener Registration
+        
         public void RegisterLocalListener<T>(Action<T> listener, object callingObject) where T : EventInfoBase
         {
             var eventType = typeof(T);
@@ -73,6 +77,10 @@ namespace Events
 
             unityEventListeners[callingObject][parameterType].Add(unityEvent);
         }
+        
+        #endregion
+
+        #region Event Invokation
 
         /// <summary>
         ///     Fires an event of type EventInfoParameter ONLY to the components on this game object
@@ -122,6 +130,8 @@ namespace Events
             yield return null;
         }
 
-        private delegate void LocalEventListener(EventInfoBase eventInfo);
+        
+        
+        #endregion
     }
 }

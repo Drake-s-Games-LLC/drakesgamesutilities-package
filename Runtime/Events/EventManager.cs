@@ -8,6 +8,12 @@ using UnityEngine;
 
 namespace Events
 {
+    /// <summary>
+    /// Class for managing events across game objects. It uses reflection to allow automatic listener registration / deregistration
+    /// via attributes, essentially making it easier to do so with fewer lines of code.
+    /// The payload for events using this manager must inherit from "EventInfoBase"
+    /// Best to set this up in a boot scene / ensure it is persisted across all of your scenes.
+    /// </summary>
     public class EventManager : MonoBehaviour
     {
         #region Fields and Properties
@@ -19,11 +25,7 @@ namespace Events
 
         private Dictionary<Type, List<MethodInfo>> typeToMethods;
         private Dictionary<Type, List<UnityEventEventInfo>> unityEventListeners;
-        private readonly WaitForEndOfFrame waitForEndOfFrame = new WaitForEndOfFrame();
-
-        // Note that any attempt to access the event manager before init will cause a null ref exception.  You must ensure
-        // the event manager is initialized before your listeners try to register themselves. Try loading initializing 
-        // the EM in a boot scene and/or setting the script execution order to execute before your other scripts
+        
         public static EventManager Instance
         {
             get
@@ -38,13 +40,8 @@ namespace Events
         }
         
         #endregion
-        private IEnumerator WaitForFinishLoading()
-        {
-            yield return waitForEndOfFrame;
-            _instance = FindObjectOfType<EventManager>();
-        }
-
-        #region Public Methods
+        
+        #region Listener Registration
         /// <summary>
         ///     Registers all of the calling class' methods who have been tagged with the proper EventListener attributes as
         ///     listeners
@@ -117,7 +114,11 @@ namespace Events
             if (!unityEventListeners.ContainsKey(parameterType) || unityEventListeners[parameterType] == null) return;
             unityEventListeners[parameterType].Remove(unityEvent);
         }
-
+        
+        #endregion
+        
+        #region Event Invokation
+        
         public void FireGlobalEvent(EventInfoBase eventInfo)
         {
             var trueEventInfoClass = eventInfo.GetType();
@@ -130,8 +131,6 @@ namespace Events
             StartCoroutine(FireEventRoutine(eventInfo, trueEventInfoClass));
         }
 
-        #endregion
-        
         private IEnumerator FireEventRoutine(EventInfoBase eventInfo, Type trueEventInfoClass)
         {
             var param = new object[1] {eventInfo};
@@ -147,6 +146,8 @@ namespace Events
 
             yield return null;
         }
+        
+        #endregion
 
         #region Manager Initialization
 
@@ -164,7 +165,7 @@ namespace Events
         {
             typeToMethods = new Dictionary<Type, List<MethodInfo>>();
 
-            foreach (var t in Assembly.GetExecutingAssembly().GetTypes())
+            foreach (var t in ReflectionHelpers.GetAllDerivedTypes<object>(System.AppDomain.CurrentDomain))
                 if (t.GetCustomAttribute(typeof(EventListenerClass)) != null)
                     foreach (var mi in t.GetMethods(BindingFlags.NonPublic | BindingFlags.Instance |
                                                     BindingFlags.DeclaredOnly | BindingFlags.Public))

@@ -1,22 +1,24 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-// Note to self:  This shold be controlled by the TIMER, not by the user.  The timer is the thing that should be public!!!
+/// <summary>
+/// Monobehaviour responsible for ticking a timer
+/// </summary>
 public class TimerComponent : MonoBehaviour
 {
-    private Coroutine timerHandle;
-    private Timer.TimerMode timerMode = Timer.TimerMode.Countdown;
     private Timer timer;
-    
-    private void Awake()
+
+    public void StartTickingTimer(Timer timer)
     {
-        timer = new Timer(timerMode);
+        StopAllCoroutines();
+        this.timer = timer;
+        StartCoroutine(TickTimer());
     }
 
-    public void StartTimer()
+    public void DestroyTimer()
     {
-        timer.StartTimer();
-        timerHandle = StartCoroutine(TickTimer());
+        StopAllCoroutines();
+        Destroy(this);
     }
 
     IEnumerator TickTimer()
