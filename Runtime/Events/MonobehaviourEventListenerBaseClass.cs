@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace DrakesGames.Events
+namespace Events
 {
     /// <summary>
     /// Inheritors of this base class will automatically register and unregister listener methods when tagged by the proper attribute "EventListenerMethod".

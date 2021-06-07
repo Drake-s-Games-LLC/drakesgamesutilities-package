@@ -1,7 +1,6 @@
-﻿using DrakesGames.Factory;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace DrakesGames.Events.InspectorSupport
+namespace Events.InspectorSupport
 {
     public class CustomEventsListener : MonoBehaviour
     {

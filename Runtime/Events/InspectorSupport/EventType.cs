@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DrakesGames.Events.InspectorSupport
+namespace Events.InspectorSupport
 {
     public class EventType : PropertyAttribute
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DrakesGames.Events.PlaymodeTesting
+namespace Events.PlaymodeTesting
 {
     // Base class automatically handles registration
     [EventListenerClass]

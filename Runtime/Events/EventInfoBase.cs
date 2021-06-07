@@ -1,6 +1,4 @@
-﻿using DrakesGames.Factory;
-
-namespace DrakesGames.Events
+﻿namespace Events
 {
     /// <summary>
     ///     Need a new one of these for each new event type.  Can pass as much or as little info as you want.

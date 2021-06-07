@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DrakesGames.Events.PlaymodeTesting
+namespace Events.PlaymodeTesting
 {
     /// <summary>
     /// Example events to be used in testing.  Note that each carries different data.  This can be defined

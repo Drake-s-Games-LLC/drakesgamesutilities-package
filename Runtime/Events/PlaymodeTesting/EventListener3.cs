@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DrakesGames.Events.PlaymodeTesting
+namespace Events.PlaymodeTesting
 {
     [EventListenerClass]
     public class EventListener3 : MonobehaviourEventListenerBaseClass

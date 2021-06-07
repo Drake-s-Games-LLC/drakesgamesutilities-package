@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
-using DrakesGames.Factory;
+using Events;
 using UnityEditor;
 using UnityEngine;
+using EventType = Events.InspectorSupport.EventType;
 
 namespace DrakesGames.Events.InspectorSupport.Editor
 {
