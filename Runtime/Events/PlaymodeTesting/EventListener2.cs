@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace DrakesGames.Events.PlaymodeTesting
+namespace Events.PlaymodeTesting
 {
     // Registration manually
     [EventListenerClass]

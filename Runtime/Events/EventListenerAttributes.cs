@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DrakesGames.Events
+namespace Events
 {
 
     /// <summary>

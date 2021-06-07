@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using DrakesGames.Events.InspectorSupport;
-using DrakesGames.Factory;
+using Events.InspectorSupport;
 using UnityEngine;
 
-namespace DrakesGames.Events
+namespace Events
 {
     /// <summary>
     ///     Local event manager / messaging system.  Functions very similarly to the "EventManager" singleton class,

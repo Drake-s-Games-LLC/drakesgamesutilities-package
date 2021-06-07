@@ -3,11 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using DrakesGames.Events.InspectorSupport;
-using DrakesGames.Factory;
+using Events.InspectorSupport;
 using UnityEngine;
 
-namespace DrakesGames.Events
+namespace Events
 {
     public class EventManager : MonoBehaviour
     {

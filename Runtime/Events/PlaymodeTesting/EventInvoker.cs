@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DrakesGames.Events.PlaymodeTesting
+namespace Events.PlaymodeTesting
 {
     /// <summary>
     /// Simple class to test / showcase event firing
