@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "displayName": "Drakes Games Utilities",
   "description": "This package contains useful scripts for various purposes.\nSo far...\n- Event Management System\n- Factory Command Pattern Starter",
-  "unity": "2019.1",
+    "unity": "2019.1",
+    "dependencies": {
+        "com.unity.render-pipelines.universal": "7.0.0"
+    },
   "keywords": [
     "Events",
     "Utility",
