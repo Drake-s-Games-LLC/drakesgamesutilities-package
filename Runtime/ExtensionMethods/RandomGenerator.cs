@@ -8,7 +8,7 @@ public interface IRandomGenerator
     float NextFloat();
 }
 
-public static class RandomGeneratorExtensions
+public static class RandomGenerator
 {
     #region Random
 
